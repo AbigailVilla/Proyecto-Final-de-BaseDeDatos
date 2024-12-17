@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Pacientes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <h1>Gestión de información de pacientes, médicos y cirugías</h1>
+  
+  <div class="container">
+    <form id="formPaciente" action="/submit-data" method="POST">
+      <h3>Registrar datos del paciente:</h3>
+      <label for="name">Nombre(s):</label>
+      <input type="text" id="name" name="name">
+      <br/>
+      <label for="lastname">Apellido(s):</label>
+      <input type="text" id="lastname" name="lastname">
+      <br/>
+      <label for="bloodtype">Tipo de sangre:</label>
+      <select id="bloodtype" name="bloodtype">
+        <option value="">Seleccione su tipo de sangre</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+      </select>
+      <br/>
+      <label for="emergencynumber">Numero de emergencia:</label>
+      <input type="number" id="emergencynumber" name="emergencynumber">
+      <br/>
+      <label for="allergies">Alergias (Si no tiene, escriba "Ninguna"):</label>
+      <input type="text" id="allergies" name="allergies">
+      <br/>
+      <label for="dptid">Número de planta para su consulta (Consulte la tabla de la parte derecha e inserte el numero):</label>
+      <input type="number" id="dptid" name="dptid">
+
+      <br/>
+      <label for="condition">Estado (¿Cómo se encuentra?):</label>
+      <input type="text" id="condition" name="condition">
+      <br/>
+      <button type="submit">Guardar</button>
+    </form>
+
+    <form id="formBuscarPaciente" action="/buscar-pacientes" method="GET">
+      <h3>Buscar pacientes:</h3>
+      <label for="name_search">Nombre(s):</label>
+      <input type="text" id="name_search" name="name_search">
+      <br/>
+      <label for="lastname_search">Apellido(s):</label>
+      <input type="text" id="lastname_search" name="lastname_search">
+      <br/>
+      <button type="submit">Buscar</button>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Emergencias</td>
+            <td>Planta 1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Pediatría</td>
+            <td>Planta 2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Alergología</td>
+            <td>Planta 3</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Otorrinolaringología</td>
+            <td>Planta 4</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Oftalmología</td>
+            <td>Planta 5</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Cardiología</td>
+            <td>Planta 6</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Ginecología</td>
+            <td>Planta 7</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Radiología</td>
+            <td>Planta 8</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Psiquiatría</td>
+            <td>Planta 9</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Cirugía plástica</td>
+            <td>Planta 10</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Ortopedia</td>
+            <td>Planta 11</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </form>
+
+    <form id="formMedico" action="/insertar-medico" method="POST">
+      <h3>Registrar Médico</h3>
+      <label for="drname">Nombre(s):</label>
+      <input type="text" id="drname" name="drname">
+
+      <label for="drnamelast">Apellido(s):</label>
+      <input type="text" id="drnamelast" name="drlastname">
+    
+      <label for="especialidad">Especialidad:</label>
+      <input type="text" id="spec" name="spec">
+
+      <label for="salary">Salario:</label>
+      <input type="number" id="salary" name="salary">
+    
+      <button type="submit">Guardar Médico</button>
+    </form>
+  </div>
+  
+  <div id="button-container">
+    <button id="buttonv" onclick="window.location.href='/medicos'">Ver lista de médicos</button>
+    <button id="buttonord" onclick="window.location.href='/ordenar-pacientes'">Ver lista de pacientes</button>
+    <button id="button-departamento" onclick="window.location.href='/medicos-por-departamento'">Ver Médicos por Departamento</button>
+  
+  </div>
+
+  <script>
+    fetch('/menu')
+      .then(res => res.json())
+      .then(data => {
+        const navbar = document.getElementById('navbar');
+        navbar.innerHTML = '<ul>';
+        data.forEach(item => {
+          navbar.innerHTML += `<li><a href="${item.url}">${item.nombre}</a></li>`;
+        });
+        navbar.innerHTML += '</ul>';
+      })
+      .catch(error => console.error('Error cargando el navbar:', error));
+  </script>
+
+  <a href="/logout">Cerrar Sesión</a>
+
+</body>
+</html>
