@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <script>
+    fetch('/menu')
+      .then(res => res.json())
+      .then(data => {
+        const navbar = document.getElementById('navbar');
+        navbar.innerHTML = '<ul>';
+        data.forEach(item => {
+          navbar.innerHTML += `<li><a href="${item.url}">${item.nombre}</a></li>`;
+        });
+        navbar.innerHTML += '</ul>';
+      })
+      .catch(error => console.error('Error cargando el navbar:', error));
+  </script>
+
+  <div class="container">
+    <div class="section">
+      <h1>Cargar Equipos desde Excel</h1>
+      <form id="formCargarExcel" action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="excelFile" accept=".xlsx" />
+        <button type="submit">Subir Archivo Excel</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h1>Cargar solicitudes de compra de equipos en formato PDF</h1>
+      <form id="formCargarPDF" action="/upload-pdf" method="POST" enctype="multipart/form-data">
+        <input type="file" name="pdfFile" accept=".pdf" />
+        <button type="submit">Subir Archivo PDF</button>
+      </form>
+    </div>
+
+    <div id="mensajeExito" class="mensaje-exito" style="display: none;">
+      <h1>Archivo cargado correctamente</h1>
+      <p>Tu archivo ha sido cargado correctamente. Puedes continuar con otras acciones.</p>
+      <div class="button-container">
+        <button onclick="window.location.href='/equipos.html'" class="buttonv">Volver</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <form id="formRegistrarEquipo" action="/register-equipo" method="POST">
+        <input type="text" name="nombre" placeholder="Nombre del equipo" required>
+        <input type="text" name="descripcion" placeholder="Descripción" required>
+        <input type="text" name="tiempoUso" placeholder="Tiempo de uso" required>
+        <input type="text" name="departamento" placeholder="Departamento" required>
+        <button type="submit">Registrar Equipo</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <form id="formBuscarEquipos" action="/buscar-equipos" method="GET">
+        <input type="text" name="search" placeholder="Buscar por nombre o descripción" required>
+        <button type="submit">Buscar Equipos</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <button id="buttonDescargarPDF" onclick="window.location.href='/download'">Descargar Equipos</button>
+    </div>
+
+    <div class="section" id="adminSection" style="display: none;">
+      <h2>Solicitudes de compra</h2>
+      <ul id="pdfList"></ul>
+    </div>
+    
+  </div>
+
+  <script>
+    fetch('/archivos-cargados')
+      .then(response => response.json())
+      .then(data => {
+        if (data.isAdmin) {
+          document.getElementById('adminSection').style.display = 'block';
+
+          const pdfList = document.getElementById('pdfList');
+          data.pdfFiles.forEach(file => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="/download-pdf/${file}" target="_blank">${file}</a>`;
+            pdfList.appendChild(listItem);
+          });
+
+          const excelList = document.getElementById('excelList');
+          data.excelFiles.forEach(file => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<a href="/download/${file}" target="_blank">${file}</a>`;
+            excelList.appendChild(listItem);
+          });
+        }
+      })
+      .catch(error => console.error('Error al cargar los archivos:', error));
+  </script>
+
+  <script src="navbar.html"></script>
+</body>
+</html>
