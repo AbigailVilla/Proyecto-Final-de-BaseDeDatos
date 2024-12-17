@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expediente de cirugías</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container">
+    <h6>Registro de datos del paciente para su cirugía</h6>
+
+    <form action="/instrumentosMedicamentos" method="POST" class="form-centralizado">
+      <div class="form-group">
+        <label for="patient">Nombre y apellidos del paciente:</label>
+        <input type="text" id="patient" name="patient" required>
+      </div>
+
+      <div class="form-group">
+        <label for="surgtype">Tipo de cirugía:</label>
+        <input type="text" id="surgtype" name="surgtype" required>
+      </div>
+
+      <div class="form-group">
+        <label for="time">Duración aproximada:</label>
+        <input type="text" id="time" name="time" required>
+      </div>
+
+      <div class="form-group">
+        <label for="surgroom">Número de quirófano:</label>
+        <input type="text" id="surgroom" name="surgroom" required>
+      </div>
+
+      <div class="form-group">
+        <label for="patientpre">Estado del paciente pre-cirugía:</label>
+        <input type="text" id="patientpre" name="patientpre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="patientpost">Estado del paciente post-cirugía:</label>
+        <input type="text" id="patientpost" name="patientpost" required>
+      </div>
+
+      <div class="form-group">
+        <label for="drlastname">Apellidos del doctor(a) a cargo:</label>
+        <input type="text" id="drlastname" name="drlastname" required>
+      </div>
+
+      <h1>Instrumentos y Medicamentos</h1>
+
+      <div class="form-group">
+        <label for="instrument_name">Nombre del instrumento:</label>
+        <input type="text" id="instrument_name" name="instrument_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="instrument_description">Descripción del instrumento:</label>
+        <input type="text" id="instrument_description" name="instrument_description" required>
+      </div>
+
+      <div class="form-group">
+        <label for="instrument_quantity">Cantidad de instrumento:</label>
+        <input type="number" id="instrument_quantity" name="instrument_quantity" required>
+      </div>
+
+      <div class="form-group">
+        <label for="medication_name">Nombre del medicamento:</label>
+        <input type="text" id="medication_name" name="medication_name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="medication_description">Descripción del medicamento:</label>
+        <input type="text" id="medication_description" name="medication_description" required>
+      </div>
+
+      <div class="form-group">
+        <label for="medication_quantity">Cantidad de medicamento:</label>
+        <input type="number" id="medication_quantity" name="medication_quantity" required>
+      </div>
+
+      <button type="submit">Aceptar</button>
+      <a href="/vista_registro_cirugia" class="button-view-records">Ver Registros</a>
+    </form>
+  </div>
+
+  <script>
+    fetch('/menu')
+      .then(res => res.json())
+      .then(data => {
+        const navbar = document.getElementById('navbar');
+        navbar.innerHTML = '<ul>';
+        data.forEach(item => {
+          navbar.innerHTML += `<li><a href="${item.url}">${item.nombre}</a></li>`;
+        });
+        navbar.innerHTML += '</ul>';
+      });
+
+    fetch('/pacienteInfo')
+      .then(res => res.json())
+      .then(data => {
+        if (data) {
+          document.getElementById('patient-name').innerText = data.nombre;
+          document.getElementById('patient-lastname').innerText = data.apellidos;
+          document.getElementById('patient-status').innerText = data.estado;
+          document.getElementById('patient-blood-type').innerText = data.tipoSangre;
+          document.getElementById('patient-emergency-contact').innerText = data.contactoEmergencia;
+          document.getElementById('patient-allergies').innerText = data.alergias;
+        }
+      });
+  </script>
+</body>
+</html>
