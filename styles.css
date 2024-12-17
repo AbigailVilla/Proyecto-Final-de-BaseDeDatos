@@ -1,0 +1,485 @@
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f0f8ff; 
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  align-items: center;
+  position: relative;
+}
+
+#imagenFondo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300%;
+  height: 40%;
+  z-index: -1; 
+}
+
+#ondapng {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-family: 'Times New Roman', Times, serif;
+  color: #0077b6; 
+  text-align: center;
+  margin: 20px 0;
+  letter-spacing: 0.5px;
+}
+
+h6 {
+  font-family: 'Times New Roman', Times, serif; 
+  color: #0077b6; 
+  padding-left: 290px;
+  text-align: center; 
+  margin: 20px 0; 
+  letter-spacing: 0.5px; 
+  font-size: 2em;
+  font-weight: 650;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+#formPaciente, #formBuscarPaciente {
+  font-family: 'Times New Roman', Times, serif;
+  width: 45%; 
+  margin-top: 20px;
+  padding: 20px;
+  padding-bottom: 5px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+#formMedico {
+  font-family: 'Times New Roman', Times, serif;
+  width: 45%; 
+  margin-top: 20px;
+  padding: 10px; 
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  z-index: 2;
+  max-height: 500px; 
+  overflow-y: auto; 
+}
+
+#registrarMedico {
+  justify-content: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 80px;
+  color: #005f73; 
+}
+
+#buttonDescargarPDF {
+ justify-content: center;
+ text-align: center;
+}
+
+#registrarMedico a {
+  font-family: 'Times New Roman', Times, serif;
+  text-decoration: none;
+  color: #00b4d8;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#registrarMedico a:hover {
+  color: #0077b6; 
+}
+
+#buttonv, #buttonord, button, a {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 8px 20px; 
+  background-color: #8bb3bd; 
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+}
+
+#a {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 8px 20px;
+  background-color: #8bb3bd; 
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-align: center;
+  width: auto; 
+}
+
+#buttonv:hover, #buttonord:hover, button:hover, a:hover {
+  background-color: #0077b6;
+}
+
+#button-container {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-top: 10px;
+}
+
+label {
+  font-family: 'Times New Roman', Times, serif;
+  display: block;
+  margin: 8px 0;
+  font-weight: 600;
+  color: #1da4be; 
+}
+
+h1 {
+  justify-content: center;
+  font-family: 'Times New Roman', Times, serif;
+  display: block;
+  margin: 8px 0;
+  font-weight: 650;
+  color: #1da4be;
+  text-align: left
+}
+
+h6 {
+  justify-content: center;
+  font-family: 'Times New Roman', Times, serif;
+  display: block;
+  margin: 8px 0;
+  font-weight: 650;
+  color: #1da4be; 
+  text-align: left;
+}
+
+
+p {
+  justify-content: center;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  display: block;
+  margin: 8px 0;
+  font-weight: 600;
+  color: #8bb3bd; 
+}
+
+#formlogin {
+  width: 100%;
+  max-width: 400px; 
+  margin-left:450px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #1da4be;
+}
+
+#form-registro {
+  width: 100%;
+  max-width: 400px; 
+  margin-left:450px;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #1da4be;
+}
+
+input, select {
+  font-family: 'Times New Roman', Times, serif;
+  width: 92%;
+  padding: 10px; 
+  margin-bottom: 15px;
+  border: 1px solid #1da4be; 
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+button:hover {
+  background-color: #0077b6; 
+}
+
+a:hover {
+  background-color: #0077b6; 
+}
+
+#navbar {
+  font-family: 'Times New Roman', Times, serif;
+  list-style-type: none;
+  background-color: #8bb3bd; 
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 8px;
+  position: relative; 
+  z-index: 2; 
+}
+
+#navbar a {
+  font-family: 'Times New Roman', Times, serif;
+  color: #ffffff;  
+  text-align: center;
+  padding: 10px 30px;
+  text-decoration: none;
+  display: block;
+  margin: 0 15px; 
+}
+
+#navbar a:hover {
+  background-color: #3683b6; 
+  color: #ffffff; 
+  border-radius: 8px;
+}
+
+#navbar a.active {
+  background-color: #3e4b48; 
+  color: white;
+}
+
+table {
+  font-family: 'Times New Roman', Times, serif;
+  width: 100%;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px;
+  border: 1px solid #1da4be; 
+}
+
+table th {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #e6f2ff; 
+  font-weight: bold;
+}
+
+table td {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f0f8ff; 
+}
+
+h11 {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f0f8ff; 
+
+}
+
+h1 {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #f0f8ff; 
+  text-align: center;
+}
+
+.mensaje-exito {
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2em;
+  color: #0077b6; 
+  margin: 20px;
+  font-weight: 600;
+  line-height: 1.6;
+  display: none; 
+}
+
+.mensaje-exito.visible {
+  display: block;
+}
+
+form {
+  margin-bottom: 20px; 
+  width: 100%;
+  max-width: 600px; 
+}
+
+.section h1 {
+  text-align: left; 
+}
+
+#formRegistrarEquipo {
+  margin-bottom: 20px; 
+}
+
+#formBuscarEquipos {
+  margin-top: 20px; 
+}
+
+#addUserForm {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; 
+  margin: 0 auto; 
+}
+
+#addUserForm label {
+  font-family: 'Times New Roman', Times, serif;
+  color: #1da4be;
+  font-weight: 600;
+  display: block;
+  margin: 10px 0 5px;
+}
+
+#addUserForm input {
+  font-family: 'Times New Roman', Times, serif;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #1da4be;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+#addUserForm button {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 10px 20px;
+  background-color: #8bb3bd;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1.2em;
+  width: 100%;
+}
+
+#addUserForm button:hover {
+  background-color: #0077b6;
+}
+
+#searchUser {
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #1da4be;
+  border-radius: 4px;
+  font-size: 1em;
+  margin: 0 auto; 
+  display: block;
+}
+
+#searchResults {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+#searchResults li {
+  background-color: #f0f8ff;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #1da4be;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+#userList {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+#userList li {
+  background-color: #f0f8ff;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #1da4be;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.button-view-records {
+  font-family: 'Times New Roman', Times, serif;
+  padding: 5px 15px; 
+  background-color: #8bb3bd; 
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  text-align: center;
+  position: absolute; 
+  right: 20px;
+  bottom: 20px; 
+}
+
+.button-view-records:hover {
+  background-color: #0077b6; 
+}
+
+.form-centralizado {
+  width: 100%; 
+  max-width: 600px; 
+  margin: 0 auto; 
+  padding: 20px; 
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  text-align: left; 
+}
+
+.reverse-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column-reverse;  
+  padding: 0;
+}
+
+.reverse-list li {
+  padding: 5px;
+}
+
+body {
+  background-image: url('imagen/fondo.jpg');
+  background-size: cover; 
+  background-position: center;
+  background-attachment: fixed; 
+  margin: 0; 
+  height: 100vh; 
+}
